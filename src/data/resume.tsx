@@ -235,7 +235,7 @@ export const DATA = {
         "Led a team of developers to **maintain and evolve 5 key operational softwares**:\n\n - Management of material supply requests\n - Waste management requests\n - HR management\n - Internal communication\n - Community-facing application to follow construction sites in the neighborhood",
       technologies: ["React", "Node.js", "Mobile Development"],
       links: [],
-      image: "/colas.png",
+      image: "/colas.jpg",
       video: "",
     },
     {

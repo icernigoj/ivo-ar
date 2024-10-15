@@ -219,7 +219,7 @@ export const DATA = {
         {
           type: "Android App",
           href: "https://play.google.com/store/apps/details?id=com.greenny",
-          icon: <Icons.iOS className="size-3" />,
+          icon: <Icons.android className="size-3" />,
         },
       ],
       image: "/greenny.webp",
@@ -260,7 +260,7 @@ export const DATA = {
         {
           type: "Android App",
           href: "https://play.google.com/store/apps/details?id=com.flylooping",
-          icon: <Icons.iOS className="size-3" />,
+          icon: <Icons.android className="size-3" />,
         },
       ],
       image: "/flylooping.jpeg",

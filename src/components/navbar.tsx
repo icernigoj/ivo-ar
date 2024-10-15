@@ -21,6 +21,7 @@ export default function Navbar() {
             <Tooltip>
               <TooltipTrigger asChild>
                 <Link
+                  aria-label={item.label}
                   href={item.href}
                   className={cn(
                     buttonVariants({ variant: "ghost", size: "icon" }),
@@ -44,6 +45,7 @@ export default function Navbar() {
               <Tooltip>
                 <TooltipTrigger asChild>
                   <Link
+                    aria-label={name}
                     href={social.url}
                     className={cn(
                       buttonVariants({ variant: "ghost", size: "icon" }),
@@ -63,7 +65,7 @@ export default function Navbar() {
         <DockIcon>
           <Tooltip>
             <TooltipTrigger asChild>
-              <ModeToggle />
+              <ModeToggle ariaLabel="Toggle light/dark mode" />
             </TooltipTrigger>
             <TooltipContent>
               <p>Theme</p>

@@ -4,7 +4,6 @@ import { ProjectCard } from "@/components/project-card";
 import { ResumeCard } from "@/components/resume-card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
-import LightbeamBackground from "@/components/ui/light-beam-background";
 import { DATA } from "@/data/resume";
 import Link from "next/link";
 import Markdown from "react-markdown";
@@ -102,10 +101,46 @@ export default function Page() {
           <BlurFade delay={BLUR_FADE_DELAY * 9}>
             <h2 className="text-xl font-bold">Skills</h2>
           </BlurFade>
-          <div className="flex flex-wrap gap-1">
-            {DATA.skills.map((skill, id) => (
-              <BlurFade key={skill} delay={BLUR_FADE_DELAY * 10 + id * 0.05}>
-                <Badge key={skill}>{skill}</Badge>
+          {DATA.skills.map((category, categoryIndex) => (
+            <div key={category.category} className="mb-4">
+              <BlurFade delay={BLUR_FADE_DELAY * (10 + categoryIndex)}>
+                <h3 className="text-lg font-semibold mb-2">
+                  {category.category}
+                </h3>
+              </BlurFade>
+              <div className="flex flex-wrap gap-1">
+                {category.items.map((skill, skillIndex) => (
+                  <BlurFade
+                    key={skill}
+                    delay={
+                      BLUR_FADE_DELAY * (11 + categoryIndex) + skillIndex * 0.05
+                    }
+                  >
+                    <Badge>{skill}</Badge>
+                  </BlurFade>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+      <section id="languages">
+        <div className="flex min-h-0 flex-col gap-y-3">
+          <BlurFade delay={BLUR_FADE_DELAY * 9}>
+            <h2 className="text-xl font-bold">Languages</h2>
+          </BlurFade>
+          <div className="flex flex-wrap gap-4 justify-between">
+            {DATA.languages.map((language, id) => (
+              <BlurFade
+                key={language.name}
+                delay={BLUR_FADE_DELAY * 10 + id * 0.05}
+              >
+                <ResumeCard
+                  title={language.name}
+                  altText={language.name}
+                  logoUrl={language.image}
+                  period={language.level}
+                />
               </BlurFade>
             ))}
           </div>

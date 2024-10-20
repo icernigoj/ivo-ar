@@ -4,7 +4,9 @@ import { ProjectCard } from "@/components/project-card";
 import { ResumeCard } from "@/components/resume-card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { DATA } from "@/data/resume";
+import { FileText } from "lucide-react";
 import Link from "next/link";
 import Markdown from "react-markdown";
 
@@ -80,7 +82,7 @@ export default function Page() {
           </BlurFade>
           {DATA.education.map((education, id) => (
             <BlurFade
-              key={education.school}
+              key={education.school + education.degree}
               delay={BLUR_FADE_DELAY * 8 + id * 0.05}
             >
               <ResumeCard
@@ -212,6 +214,14 @@ export default function Page() {
           </BlurFade>
         </div>
       </section>
+      <div id="print-button" className="fixed bottom-4 right-4 z-50">
+        <Button asChild className="rounded-full shadow-lg" size="icon">
+          <Link href={DATA.CVLink}>
+            <FileText className="h-4 w-4" />
+            <span className="sr-only">Print CV</span>
+          </Link>
+        </Button>
+      </div>
     </main>
   );
 }

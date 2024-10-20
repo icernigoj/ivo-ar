@@ -85,6 +85,9 @@ export const ResumeCard = ({
               <div className="font-sans text-xs mt-1">{subtitle}</div>
             )}
           </CardHeader>
+          <Markdown className="prose max-w-full text-pretty font-sans text-sm dark:prose-invert hidden print:block">
+            {description}
+          </Markdown>
           {description && (
             <motion.div
               initial={{ opacity: 0, height: 0 }}

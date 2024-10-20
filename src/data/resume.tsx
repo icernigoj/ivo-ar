@@ -7,6 +7,7 @@ export const DATA = {
   url: "https://ivo.ar",
   location: "Paris, France",
   locationLink: "https://www.google.com/maps/place/Paris",
+  CVLink: "https://docs.google.com/document/d/1_jEl91d9QYoijcrEh9fvuegtkXeBhQb3/edit?usp=sharing&ouid=115893443729996838769&rtpof=true&sd=true",
   description: "Passionate fullstack developer, entrepreneur and pianist.",
   summary:
     "Passionate Full Stack Developer and Tech Lead with a knack for turning ideas into reality.\n\nI thrive on crafting cutting-edge web and mobile applications, leveraging a diverse tech stack including **Node.js**, **React**, **React Native**, **Next.js**, **iOS** (**Swift** and **Objective-C**), **PHP** (**Symfony**), and **SAP HANA**.\n\nMy journey has been an exciting blend of innovation and leadership - from spearheading development teams at **Colas** to co-founding **Greenny** and **VenTuring**. I've also had the thrill of bringing **flylooping.com** to life.\n\nAlways eager to tackle new challenges, I'm driven by the desire to create impactful solutions that push technological boundaries and deliver exceptional user experiences.",
@@ -151,7 +152,7 @@ export const DATA = {
       start: "January 2021",
       end: "July 2021",
       description:
-        "**Focused on designing, developing, and maintaining** versatile software solutions.\n\n**Key responsibilities**:\n\n - Handling infrastructure administration\n - Offering technical advice\n - Formulating detailed proposals for software development projects\n - Contributing to the development and enhancement of new features\n - Ensuring continuous system optimization",
+        "**Focused on designing, developing, and maintaining** the Dashlane's backoffice.\n\n**Key responsibilities**:\n\n - Handling infrastructure administration\n - Offering technical advice\n - Formulating detailed proposals for software development projects\n - Contributing to the development and enhancement of new features\n - Ensuring continuous system optimization",
     },
     {
       company: "FlyLooping",

@@ -7,10 +7,23 @@ export const DATA = {
   url: "https://ivo.ar",
   location: "Paris, France",
   locationLink: "https://www.google.com/maps/place/Paris",
-  CVLink: "https://docs.google.com/document/d/1_jEl91d9QYoijcrEh9fvuegtkXeBhQb3/edit?usp=sharing&ouid=115893443729996838769&rtpof=true&sd=true",
+  CVLink:
+    "https://docs.google.com/document/d/1_jEl91d9QYoijcrEh9fvuegtkXeBhQb3/edit?usp=sharing&ouid=115893443729996838769&rtpof=true&sd=true",
   description: "Passionate fullstack developer, entrepreneur and pianist.",
   summary:
-    "Passionate Full Stack Developer and Tech Lead with a knack for turning ideas into reality.\n\nI thrive on crafting cutting-edge web and mobile applications, leveraging a diverse tech stack including **Node.js**, **React**, **React Native**, **Next.js**, **iOS** (**Swift** and **Objective-C**), **PHP** (**Symfony**), and **SAP HANA**.\n\nMy journey has been an exciting blend of innovation and leadership - from spearheading development teams at **Colas** to co-founding **Greenny** and **VenTuring**. I've also had the thrill of bringing **flylooping.com** to life.\n\nAlways eager to tackle new challenges, I'm driven by the desire to create impactful solutions that push technological boundaries and deliver exceptional user experiences.",
+    `👨‍💻 **Fullstack developer & tech lead** with **12+ years** building web and mobile applications that people actually use.
+
+I enjoy working with diverse tech stacks - **React/React Native**, **Node.js**, **NestJS**, **Next.js** and **PHP/Symfony**. What really drives me is creating end-to-end solutions from scratch, with a strong focus on product design and working closely with clients to understand their needs.
+
+🔧 **Recently, I've been working on some interesting challenges:**
+
+- At **Colas**, I had the opportunity to lead a dev team maintaining 5 different operational applications - from supply chain management to public-facing construction site tracking. It taught me a lot about juggling multiple priorities and keeping critical systems running smoothly.
+
+- Built **Greenny** from the ground up - a climate tech platform that helps companies track and reduce their CO2 footprint through AI-powered analytics and employee engagement via mobile app.
+
+- Created the entire tech infrastructure for **FlyLooping**, a travel startup where users can book multi-city European tours with optimized flight combinations.
+
+I'm always curious about new technologies, but I believe the best solutions come from understanding user needs first, then choosing the right tools for the job. I try to keep things pragmatic and team-oriented, focusing on delivering solutions that actually work for the people who use them.`,
   avatarUrl: "/ivan_cernigoj.jpg",
   skills: [
     {
@@ -21,13 +34,14 @@ export const DATA = {
         "Swift",
         "Objective C",
         "Java",
+        "Python",
         "C",
         "Shell Script",
       ],
     },
     {
       category: "Frameworks & Libraries",
-      items: ["Node.js", "React", "React Native", "Next.js", "Symfony"],
+      items: ["Node.js", "React", "React Native", "Next.js", "NestJS", "Symfony"],
     },
     {
       category: "Cloud & DevOps",
@@ -48,13 +62,8 @@ export const DATA = {
       items: ["PostgreSQL", "MySQL", "SAP HANA"],
     },
     {
-      "category": "Other Technologies",
-      "items": [
-        "RabbitMQ",
-        "Stripe",
-        "PayPal",
-        "Web Scraping"
-      ]
+      category: "Other Technologies",
+      items: ["RabbitMQ", "Stripe", "PayPal", "Web Scraping", "Elasticsearch"],
     },
   ],
   navbar: [
@@ -105,6 +114,16 @@ export const DATA = {
       end: "Current",
       description:
         "Led a team of developers to **maintain and evolve 5 key operational softwares**:\n\n - Management of material supply requests\n - Waste management requests\n - HR management\n - Internal communication\n - Community-facing application to follow construction sites in the neighborhood",
+      skills: [
+        "React",
+        "PHP",
+        "Symfony",
+        "Node.js",
+        "React Native",
+        "Azure",
+        "Project Management",
+        "Team Leadership",
+      ],
     },
     {
       company: "Greenny",
@@ -117,6 +136,17 @@ export const DATA = {
       end: "February 2024",
       description:
         "**Co-founded and developed from scratch** a SaaS solution for companies to measure, reduce, and compensate their CO2 footprint.\n\n**Led the technical development** of:\n\n - AI-powered backoffice with nextjs\n - Employee-facing mobile application\n - Backend with nodejs\n - AWS infrastructure",
+      skills: [
+        "Next.js",
+        "Node.js",
+        "React Native",
+        "AWS",
+        "TypeScript",
+        "PostgreSQL",
+        "Docker",
+        "CI/CD",
+        "AI Integration",
+      ],
     },
     {
       company: "Didomi",
@@ -129,6 +159,15 @@ export const DATA = {
       end: "June 2023",
       description:
         "**Responsible for designing, developing and maintaining** the CMP module in an agile environment.\n\n**Worked on both**:\n\n - Front-end backoffice (React)\n - Back-end (nodejs, Feather.js with PostgreSQL)\n\n**Key projects**:\n\n - Self-Service module\n - CMP Config Generator\n - New CMP Console frontend\n - Multi regulation support",
+      skills: [
+        "React",
+        "Node.js",
+        "Feather.js",
+        "PostgreSQL",
+        "TypeScript",
+        "Agile",
+        "REST APIs",
+      ],
     },
     {
       company: "Bouygues Immobilier",
@@ -141,6 +180,14 @@ export const DATA = {
       end: "June 2022",
       description:
         "**Led the design, development, and maintenance** of comprehensive software solutions, utilizing a wide range of technologies.\n\n**Role encompassed**:\n\n - Software development\n - Offering technical advice\n - Preparing detailed proposals and contracts\n\n**Key achievements**:\n\n - Developed a **React Native application** for construction phase QA and contractor anomaly assignment\n - Created a **web-based KPIs Dashboard** with real-time data integration via websockets\n - Developed a **backoffice web application** integrated with CRM and various third-party systems",
+      skills: [
+        "React Native",
+        "Node.js",
+        "WebSocket",
+        "CRM Integration",
+        "Technical Writing",
+        "Consulting",
+      ],
     },
     {
       company: "Dashlane",
@@ -153,6 +200,13 @@ export const DATA = {
       end: "July 2021",
       description:
         "**Focused on designing, developing, and maintaining** the Dashlane's backoffice.\n\n**Key responsibilities**:\n\n - Handling infrastructure administration\n - Offering technical advice\n - Formulating detailed proposals for software development projects\n - Contributing to the development and enhancement of new features\n - Ensuring continuous system optimization",
+      skills: [
+        "Infrastructure Management",
+        "System Design",
+        "Technical Writing",
+        "Feature Development",
+        "System Optimization",
+      ],
     },
     {
       company: "FlyLooping",
@@ -165,6 +219,15 @@ export const DATA = {
       end: "December 2021",
       description:
         "**Managed, designed and carried out** all FlyLooping tech projects.\n\n**Key developments**:\n\n - Website (Symfony)\n - Flight search engine (Node.js)\n - Mobile app (React Native)\n - Set up AWS infrastructure with CI/CD",
+      skills: [
+        "Symfony",
+        "Node.js",
+        "React Native",
+        "AWS",
+        "CI/CD",
+        "System Architecture",
+        "Technical Leadership",
+      ],
     },
     {
       company: "VenTuring",
@@ -177,6 +240,16 @@ export const DATA = {
       end: "July 2021",
       description:
         "**Management and development** of IT projects based on various technologies (React, React Native, Symfony, Node.js, iOS, Android).\n\n**Notable projects**:\n\n - vLogistics\n - Billetera Swift\n - vPicking\n - vHumanize\n - vBrand\n - WebMed",
+      skills: [
+        "React",
+        "React Native",
+        "Symfony",
+        "Node.js",
+        "iOS",
+        "Android",
+        "Project Management",
+        "Team Leadership",
+      ],
     },
     {
       company: "Webnet",
@@ -189,6 +262,7 @@ export const DATA = {
       end: "January 2018",
       description:
         "**Design, development and support** of PHP Symfony/Drupal 8 based web applications integrated with RabbitMQ and Node.js.",
+      skills: ["PHP", "Symfony", "Drupal 8", "RabbitMQ", "Node.js"],
     },
     {
       company: "Wirsolut",
@@ -201,6 +275,14 @@ export const DATA = {
       end: "May 2017",
       description:
         "**Design, development and support** of iOS applications for retail and entertainment industries.\n\n**Key achievement**: Developed multi-platform marketplace applications with PayPal, MercadoPago and FedEx integration.",
+      skills: [
+        "iOS",
+        "Swift",
+        "Objective-C",
+        "PayPal Integration",
+        "MercadoPago",
+        "FedEx Integration",
+      ],
     },
     {
       company: "Deloitte",
@@ -213,6 +295,14 @@ export const DATA = {
       end: "October 2015",
       description:
         "**Design, development and support** of decision support systems and SAP HANA-based BI boards with Web and iOS native applications.\n\n**Additional responsibilities**:\n\n - Conducted SAP HANA training\n - Developed a web platform for sentimental analysis of social media data",
+      skills: [
+        "SAP HANA",
+        "Business Intelligence",
+        "iOS",
+        "Web Development",
+        "Training",
+        "Sentiment Analysis",
+      ],
     },
   ],
   education: [
@@ -276,6 +366,31 @@ export const DATA = {
       image: "/greenny.webp",
       video: "",
       youtubeVideo: "https://www.youtube.com/watch?v=2kfXieH9fwI",
+    },
+    {
+      title: "Didomi CMP Platform",
+      href: "https://www.didomi.io",
+      dates: "2022 - 2023",
+      active: false,
+      description:
+        "Developed and maintained **Didomi's Consent Management Platform (CMP)** serving millions of users across Europe.\n\n**Key features built**:\n\n- Self-Service configuration module\n- Multi-regulation compliance (GDPR, CCPA, LGPD)\n- Real-time consent analytics dashboard\n- Advanced CMP configuration generator",
+      technologies: [
+        "React",
+        "Node.js",
+        "Feather.js",
+        "PostgreSQL",
+        "TypeScript",
+        "Elasticsearch",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://www.didomi.io",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
+      image: "/didomi.png",
+      video: "",
     },
     {
       title: "Colas Project Management",

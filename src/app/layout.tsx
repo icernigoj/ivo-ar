@@ -4,9 +4,9 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { DATA } from "@/data/resume";
 import { cn } from "@/lib/utils";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
-import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 
 const fontSans = FontSans({
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     description: DATA.description,
     url: DATA.url,
     siteName: `${DATA.name}`,
-    locale: "en_US",
+    locale: "en",
     type: "website",
   },
   robots: {
@@ -59,25 +59,27 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
-          "min-h-screen bg-background font-sans antialiased max-w-3xl mx-auto py-12 sm:py-24 px-6",
+          "min-h-screen bg-background font-sans antialiased",
           fontSans.variable
         )}
       >
         <ThemeProvider attribute="class" defaultTheme="light">
           <TooltipProvider delayDuration={0}>
-            {children}
-            <Navbar />
+            <div className="relative">
+              {children}
+              <Navbar />
 
-            <AnimatedGridPattern
-              numSquares={50}
-              maxOpacity={0.1}
-              duration={10}
-              repeatDelay={1}
-              className={cn(
-                "[mask-image:radial-gradient(800px_circle_at_center,white,transparent)]",
-                "inset-y-[-30%] z-[-1]"
-              )}
-            />
+              <AnimatedGridPattern
+                numSquares={50}
+                maxOpacity={0.1}
+                duration={10}
+                repeatDelay={1}
+                className={cn(
+                  "[mask-image:radial-gradient(800px_circle_at_center,white,transparent)]",
+                  "inset-y-[-30%] z-[-1] fixed"
+                )}
+              />
+            </div>
           </TooltipProvider>
         </ThemeProvider>
 

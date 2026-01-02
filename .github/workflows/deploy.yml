@@ -1,0 +1,77 @@
+name: Deploy to Production
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Cache Next.js build
+        uses: actions/cache@v4
+        with:
+          path: .next/cache
+          key: nextjs-${{ hashFiles('pnpm-lock.yaml') }}-${{ hashFiles('src/**/*.ts', 'src/**/*.tsx') }}
+          restore-keys: |
+            nextjs-${{ hashFiles('pnpm-lock.yaml') }}-
+            nextjs-
+
+      - name: Build
+        run: pnpm build
+        env:
+          GA_ID: ${{ secrets.GA_ID }}
+
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          for i in 1 2 3; do
+            ssh-keyscan -H 62.72.8.28 >> ~/.ssh/known_hosts && break
+            echo "Attempt $i failed, retrying..."
+            sleep 5
+          done
+
+      - name: Deploy to server
+        run: |
+          rsync -avz --delete \
+            -e "ssh -i ~/.ssh/id_ed25519" \
+            ./out/ root@62.72.8.28:/var/www/ivo-ar/out/
+
+      - name: Health check
+        run: |
+          sleep 5
+          for i in 1 2 3; do
+            if curl -sf https://ivo.ar > /dev/null; then
+              echo "Deployment successful!"
+              exit 0
+            fi
+            echo "Attempt $i failed, waiting..."
+            sleep 5
+          done
+          echo "Health check failed after 3 attempts"
+          exit 1

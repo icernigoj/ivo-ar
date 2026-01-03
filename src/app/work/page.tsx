@@ -4,7 +4,7 @@ import { DATA } from "@/data/resume";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Work Experience",
+  title: "Work",
   description: `${DATA.name}'s professional experience and education background.`,
 };
 
@@ -18,7 +18,7 @@ export default function WorkPage() {
         <section className="space-y-4">
           <BlurFade delay={BLUR_FADE_DELAY}>
             <h1 className="text-4xl sm:text-5xl font-bold tracking-tight bg-gradient-to-r from-zinc-900 via-zinc-700 to-zinc-900 dark:from-white dark:via-zinc-300 dark:to-white bg-clip-text text-transparent">
-              Work Experience
+              Work
             </h1>
           </BlurFade>
           <BlurFade delay={BLUR_FADE_DELAY * 2}>

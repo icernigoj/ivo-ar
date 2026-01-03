@@ -11,36 +11,46 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { motion } from "framer-motion";
 
 export default function Sidebar() {
   const pathname = usePathname();
 
   return (
     <>
-      {/* Desktop Sidebar - Minimal Glass Style */}
+      {/* Desktop Sidebar - Gradient + Noise Style */}
       <aside className="hidden md:flex fixed left-6 top-6 bottom-6 z-40 w-56 flex-col">
-        <div className="flex-1 flex flex-col rounded-xl overflow-hidden relative">
-          {/* Glass background layers */}
-          <div className="absolute inset-0 bg-white/40 dark:bg-white/5 backdrop-blur-2xl" />
-          <div className="absolute inset-0 bg-gradient-to-b from-white/60 via-white/20 to-white/40 dark:from-white/10 dark:via-white/5 dark:to-white/10" />
-          <div className="absolute inset-[1px] rounded-[11px] bg-gradient-to-b from-white/80 to-transparent dark:from-white/20 dark:to-transparent opacity-50" />
+        <div className="flex-1 flex flex-col rounded-xl relative">
+          {/* Background container with overflow hidden for rounded corners */}
+          <div className="absolute inset-0 rounded-xl overflow-hidden">
+            {/* Gradient background */}
+            <div className="absolute inset-0 bg-gradient-to-br from-zinc-50 via-slate-50 to-zinc-100 dark:from-zinc-900 dark:via-slate-900 dark:to-zinc-950" />
+            {/* Subtle color tint */}
+            <div className="absolute inset-0 bg-gradient-to-br from-sky-500/5 via-transparent to-blue-500/5 dark:from-sky-500/10 dark:via-transparent dark:to-blue-500/5" />
+            {/* Noise texture */}
+            <div className="absolute inset-0 opacity-[0.08] dark:opacity-[0.12]" style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`
+            }} />
+          </div>
           {/* Border */}
-          <div className="absolute inset-0 rounded-xl border border-white/50 dark:border-white/10" />
+          <div className="absolute inset-0 rounded-xl border border-zinc-200/50 dark:border-zinc-800/50 pointer-events-none" />
 
           {/* Content */}
           <div className="relative z-10 flex flex-col flex-1">
             {/* Profile section */}
             <div className="p-5 pb-4">
-              <Link href="/" className="group flex items-center gap-3">
-                <Avatar className="size-10 border-2 border-white/50 dark:border-white/20 shadow-md rounded-lg">
-                  <AvatarImage alt={DATA.name} src={DATA.avatarUrl} />
-                  <AvatarFallback className="bg-zinc-200 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 font-medium rounded-lg">
-                    {DATA.initials}
-                  </AvatarFallback>
-                </Avatar>
-                <div>
-                  <p className="font-medium text-sm text-zinc-900 dark:text-white">{DATA.name}</p>
-                  <p className="text-xs text-zinc-500 dark:text-zinc-400">{DATA.location}</p>
+              <Link href="/" className="group block">
+                <div className="flex items-start gap-3">
+                  <Avatar className="size-10 border-2 border-white/50 dark:border-white/20 shadow-md rounded-lg shrink-0 mt-0.5">
+                    <AvatarImage alt={DATA.name} src={DATA.avatarUrl} />
+                    <AvatarFallback className="bg-zinc-200 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 font-medium rounded-lg">
+                      {DATA.initials}
+                    </AvatarFallback>
+                  </Avatar>
+                  <div className="min-w-0 py-0.5">
+                    <p className="font-medium text-sm text-zinc-900 dark:text-white">{DATA.name}</p>
+                    <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">{DATA.location}</p>
+                  </div>
                 </div>
               </Link>
             </div>
@@ -51,13 +61,24 @@ export default function Sidebar() {
                 {DATA.navbar.map((item) => {
                   const isActive = pathname === item.href;
                   return (
-                    <li key={item.href}>
+                    <li key={item.href} className="relative">
+                      {isActive && (
+                        <motion.div
+                          layoutId="sidebar-active"
+                          className="absolute inset-0 bg-white/60 dark:bg-white/10 rounded-lg"
+                          transition={{
+                            type: "spring",
+                            stiffness: 350,
+                            damping: 30,
+                          }}
+                        />
+                      )}
                       <Link
                         href={item.href}
                         className={cn(
-                          "block px-3 py-2 rounded-lg text-sm transition-all duration-200",
+                          "relative block px-3 py-2 rounded-lg text-sm transition-colors duration-200",
                           isActive
-                            ? "bg-white/60 dark:bg-white/10 text-zinc-900 dark:text-white font-medium"
+                            ? "text-zinc-900 dark:text-white font-medium"
                             : "text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-white/40 dark:hover:bg-white/5"
                         )}
                       >
@@ -100,31 +121,49 @@ export default function Sidebar() {
         </div>
       </aside>
 
-      {/* Mobile Bottom Bar - Minimal Glass */}
+      {/* Mobile Bottom Bar - Gradient + Noise */}
       <nav className="md:hidden fixed bottom-4 left-4 right-4 z-40">
         <div className="relative rounded-xl overflow-hidden">
-          {/* Glass layers */}
-          <div className="absolute inset-0 bg-white/50 dark:bg-white/10 backdrop-blur-2xl" />
-          <div className="absolute inset-0 bg-gradient-to-b from-white/60 to-white/30 dark:from-white/15 dark:to-white/5" />
-          <div className="absolute inset-0 rounded-xl border border-white/60 dark:border-white/10" />
+          {/* Gradient background */}
+          <div className="absolute inset-0 bg-gradient-to-r from-zinc-50 via-slate-50 to-zinc-50 dark:from-zinc-900 dark:via-slate-900 dark:to-zinc-900" />
+          {/* Subtle color tint */}
+          <div className="absolute inset-0 bg-gradient-to-r from-sky-500/5 via-transparent to-blue-500/5 dark:from-sky-500/10 dark:via-transparent dark:to-blue-500/5" />
+          {/* Noise texture */}
+          <div className="absolute inset-0 opacity-[0.08] dark:opacity-[0.12]" style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`
+          }} />
+          {/* Border */}
+          <div className="absolute inset-0 rounded-xl border border-zinc-200/50 dark:border-zinc-800/50" />
 
           {/* Content */}
           <div className="relative z-10 flex items-center justify-around px-2 py-2">
             {DATA.navbar.map((item) => {
               const isActive = pathname === item.href;
               return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={cn(
-                    "px-3 py-1.5 rounded-md text-xs font-medium transition-all duration-200",
-                    isActive
-                      ? "bg-white/60 dark:bg-white/15 text-zinc-900 dark:text-white"
-                      : "text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white"
+                <div key={item.href} className="relative">
+                  {isActive && (
+                    <motion.div
+                      layoutId="mobile-nav-active"
+                      className="absolute inset-0 bg-white/60 dark:bg-white/15 rounded-md"
+                      transition={{
+                        type: "spring",
+                        stiffness: 350,
+                        damping: 30,
+                      }}
+                    />
                   )}
-                >
-                  {item.label}
-                </Link>
+                  <Link
+                    href={item.href}
+                    className={cn(
+                      "relative block px-3 py-1.5 rounded-md text-xs font-medium transition-colors duration-200",
+                      isActive
+                        ? "text-zinc-900 dark:text-white"
+                        : "text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white"
+                    )}
+                  >
+                    {item.label}
+                  </Link>
+                </div>
               );
             })}
           </div>

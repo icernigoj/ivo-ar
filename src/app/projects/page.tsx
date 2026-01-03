@@ -14,7 +14,7 @@ const BLUR_FADE_DELAY = 0.04;
 export default function ProjectsPage() {
   return (
     <div className="min-h-screen">
-      <div className="max-w-4xl mx-auto py-12 sm:py-20 px-6 space-y-16">
+      <div className="max-w-3xl mx-auto py-12 sm:py-20 px-6 space-y-16">
         {/* Header */}
         <section className="space-y-4">
           <BlurFade delay={BLUR_FADE_DELAY}>
@@ -37,7 +37,7 @@ export default function ProjectsPage() {
               Featured Work
             </h2>
           </BlurFade>
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+          <div className="space-y-6">
             {DATA.projects.map((project, id) => (
               <BlurFade
                 key={project.title}

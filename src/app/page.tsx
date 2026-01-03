@@ -58,7 +58,7 @@ export default function Page() {
           <div className="space-y-4">
             <BlurFadeText
               delay={BLUR_FADE_DELAY * 2}
-              className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight bg-gradient-to-r from-zinc-900 via-zinc-700 to-zinc-900 dark:from-white dark:via-zinc-300 dark:to-white bg-clip-text text-transparent"
+              className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight bg-gradient-to-r from-zinc-900 via-zinc-700 to-zinc-900 dark:from-white dark:via-zinc-300 dark:to-white bg-clip-text text-transparent pb-2"
               yOffset={8}
               text={DATA.name}
             />

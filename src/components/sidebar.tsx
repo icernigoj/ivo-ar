@@ -9,12 +9,17 @@ import {
 import { DATA } from "@/data/resume";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { motion } from "framer-motion";
 
 export default function Sidebar() {
   const pathname = usePathname();
+  const router = useRouter();
+
+  const handlePrefetch = (href: string) => {
+    router.prefetch(href);
+  };
 
   return (
     <>
@@ -72,6 +77,7 @@ export default function Sidebar() {
                       )}
                       <Link
                         href={item.href}
+                        onMouseEnter={() => handlePrefetch(item.href)}
                         className={cn(
                           "relative block px-3 py-2 rounded-lg text-sm transition-colors duration-200",
                           isActive
@@ -153,6 +159,7 @@ export default function Sidebar() {
                     )}
                     <Link
                       href={item.href}
+                      onMouseEnter={() => handlePrefetch(item.href)}
                       className={cn(
                         "relative block px-3 py-1.5 rounded-md text-xs font-medium transition-colors duration-200",
                         isActive

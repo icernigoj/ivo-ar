@@ -1,5 +1,5 @@
 import { Icons } from "@/components/icons";
-import { HomeIcon } from "lucide-react";
+import { HomeIcon, BriefcaseIcon, RocketIcon, MusicIcon } from "lucide-react";
 
 export const DATA = {
   name: "Iván Cernigoj",
@@ -63,13 +63,14 @@ I'm always curious about new technologies, but I believe the best solutions come
     },
     {
       category: "Other Technologies",
-      items: ["RabbitMQ", "Stripe", "PayPal", "Web Scraping", "Elasticsearch"],
+      items: ["Kafka", "RabbitMQ", "Microservices", "Dynatrace", "Stripe", "PayPal", "Web Scraping", "Elasticsearch"],
     },
   ],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
-    /*     { href: "/blog", icon: NotebookIcon, label: "Blog" },
-     */
+    { href: "/work", icon: BriefcaseIcon, label: "Work" },
+    { href: "/projects", icon: RocketIcon, label: "Projects" },
+    { href: "/piano", icon: MusicIcon, label: "Piano" },
   ],
   contact: {
     email: "ivancerni@gmail.com",
@@ -464,4 +465,62 @@ I'm always curious about new technologies, but I believe the best solutions come
     "Hiring Interviews",
   ],
   hobbies: ["Piano", "Guitar", "Reading", "Biking", "Swimming", "Football"],
+  piano: {
+    introduction: `I started playing piano when I was 10 years old. Over the years, I've built up a repertoire spanning from **Bach** and **Mozart** to **Chopin**, **Liszt**, and **Rachmaninov**.
+
+Music has always been a counterbalance to my work in tech - a different kind of discipline that requires patience, practice, and emotional expression. I particularly enjoy the **Romantic period** composers, with Chopin being my favorite.`,
+    songs: [
+      // Bach
+      { title: "Prelude No. 1 in C major", composer: "J.S. Bach" },
+      { title: "Prelude No. 2 in C minor", composer: "J.S. Bach" },
+      // Beethoven
+      { title: "Sonata No. 14 'Moonlight' (all movements)", composer: "Beethoven" },
+      { title: "Sonata No. 8 'Pathétique' (all movements)", composer: "Beethoven" },
+      { title: "Sonata No. 23 'Appassionata' (mov. 2 & part of 3)", composer: "Beethoven" },
+      { title: "Für Elise", composer: "Beethoven" },
+      // Mozart
+      { title: "Fantasia in D minor K397", composer: "Mozart" },
+      { title: "Sonata No. 16 in C major K545 (part of mov. 1 & 2)", composer: "Mozart" },
+      { title: "Sonata No. 11 'Alla Turca' K331 (mov. 3)", composer: "Mozart" },
+      // Chopin
+      { title: "Grande Valse Brillante Op. 18 in E-flat major", composer: "Chopin" },
+      { title: "Waltz Op. 34 No. 2 in A minor", composer: "Chopin" },
+      { title: "Waltz Op. 64 No. 1 'Minute' in D-flat major", composer: "Chopin" },
+      { title: "Waltz Op. 64 No. 2 in C-sharp minor", composer: "Chopin" },
+      { title: "Waltz Op. 69 No. 2 in B minor", composer: "Chopin" },
+      { title: "Waltz Posth. No. 14 in E minor", composer: "Chopin" },
+      { title: "Waltz Posth. No. 21 in C minor", composer: "Chopin" },
+      { title: "Ballade No. 1 in G minor (first part)", composer: "Chopin" },
+      { title: "Etude Op. 10 No. 1 in C major", composer: "Chopin" },
+      { title: "Etude Op. 10 No. 12 'Revolutionary' in C minor", composer: "Chopin" },
+      { title: "Prelude Op. 28 No. 4 in E minor", composer: "Chopin" },
+      { title: "Nocturne Op. 9 No. 1 in B-flat minor", composer: "Chopin" },
+      { title: "Nocturne Op. 9 No. 2 in E-flat major", composer: "Chopin" },
+      { title: "Nocturne Op. 27 No. 2 in D-flat major", composer: "Chopin" },
+      { title: "Nocturne Op. 55 No. 1 in F minor", composer: "Chopin" },
+      { title: "Nocturne Op. 55 No. 2 in E-flat major", composer: "Chopin" },
+      { title: "Piano Concerto No. 1 in E minor (excerpts)", composer: "Chopin" },
+      // Liszt
+      { title: "Liebesträum No. 3", composer: "Liszt" },
+      { title: "Hungarian Rhapsody No. 2", composer: "Liszt" },
+      { title: "Paganini Etude No. 3 'La Campanella' (partial)", composer: "Liszt" },
+      // Others
+      { title: "Clair de Lune (Suite Bergamasque)", composer: "Debussy" },
+      { title: "Le Cygne (Carnival of the Animals)", composer: "Saint-Saëns" },
+      { title: "Gymnopédie No. 1", composer: "Satie" },
+      { title: "Etude Op. 8 No. 12 in D-sharp minor", composer: "Scriabin" },
+      { title: "Prelude Op. 23 No. 5 in G minor", composer: "Rachmaninoff" },
+      { title: "Prelude Op. 3 No. 2 in C-sharp minor", composer: "Rachmaninoff" },
+      { title: "Piano Concerto No. 2 (excerpts)", composer: "Rachmaninoff" },
+      { title: "The Man I Love", composer: "Gershwin" },
+      { title: "Piano Concerto in F (excerpts)", composer: "Gershwin" },
+      { title: "Libertango", composer: "Piazzolla" },
+      { title: "Adiós Nonino", composer: "Piazzolla" },
+      // Fun
+      { title: "Himno Nacional Argentino", composer: "Traditional" },
+      { title: "Super Mario Bros Main Theme", composer: "Koji Kondo" },
+      { title: "Zelda's Fairy Fountain", composer: "Koji Kondo" },
+    ],
+    videos: [],
+  },
 } as const;

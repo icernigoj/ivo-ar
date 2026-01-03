@@ -40,16 +40,14 @@ export default function Sidebar() {
             {/* Profile section */}
             <div className="p-5 pb-4">
               <Link href="/" className="group block">
-                <div className="flex items-start gap-3">
-                  <Avatar className="size-10 border-2 border-white/50 dark:border-white/20 shadow-md rounded-lg shrink-0 mt-0.5">
+                <div className="flex items-center gap-3">
+                  <Avatar className="size-10 border-2 border-white/50 dark:border-white/20 shadow-md rounded-full shrink-0">
                     <AvatarImage alt={DATA.name} src={DATA.avatarUrl} />
-                    <AvatarFallback className="bg-zinc-200 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 font-medium rounded-lg">
+                    <AvatarFallback className="bg-zinc-200 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 font-medium rounded-full">
                       {DATA.initials}
                     </AvatarFallback>
                   </Avatar>
-                  <div className="min-w-0 py-0.5">
-                    <p className="font-medium text-sm text-zinc-900 dark:text-white">{DATA.name}</p>
-                  </div>
+                  <p className="font-semibold text-base text-zinc-900 dark:text-white">{DATA.name}</p>
                 </div>
               </Link>
             </div>

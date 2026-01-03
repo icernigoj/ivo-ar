@@ -3,7 +3,6 @@ import { ProjectCard } from "@/components/project-card";
 import { DATA } from "@/data/resume";
 import { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Projects",
@@ -62,18 +61,18 @@ export default function ProjectsPage() {
         {/* Blog Link */}
         <section>
           <BlurFade delay={BLUR_FADE_DELAY * 10}>
-            <Link
-              href="/blog"
-              className="group flex items-center justify-between p-6 rounded-2xl bg-gradient-to-br from-sky-500/10 via-blue-500/10 to-cyan-500/10 border border-zinc-200/50 dark:border-zinc-800/50 hover:border-sky-500/30 transition-colors"
-            >
-              <div>
-                <h2 className="text-xl font-bold text-zinc-900 dark:text-white mb-1">Writing</h2>
-                <p className="text-zinc-600 dark:text-zinc-400">
-                  Thoughts on tech, startups, and lessons learned
-                </p>
-              </div>
-              <ArrowRight className="size-5 text-zinc-400 group-hover:text-sky-500 group-hover:translate-x-1 transition-all" />
-            </Link>
+            <div className="border-t border-zinc-200 dark:border-zinc-800 pt-8">
+              <p className="text-zinc-600 dark:text-zinc-400">
+                Read my{" "}
+                <Link
+                  href="/blog"
+                  className="text-zinc-900 dark:text-white hover:underline"
+                >
+                  blog
+                </Link>{" "}
+                for thoughts on tech, startups, and lessons learned.
+              </p>
+            </div>
           </BlurFade>
         </section>
       </div>

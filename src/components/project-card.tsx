@@ -1,12 +1,4 @@
 import React from 'react';
-import { Badge } from "@/components/ui/badge";
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
@@ -35,86 +27,73 @@ export function ProjectCard({
   description,
   dates,
   tags,
-  link,
   image,
   video,
   links,
   className,
 }: Props) {
   return (
-    <Card
+    <div
       className={cn(
-        "flex flex-col overflow-hidden border hover:shadow-lg transition-all duration-300 ease-out h-full",
+        "group flex flex-col h-full",
         className
       )}
     >
-      <Link
-        href={href || "#"}
-        className="block cursor-pointer w-full overflow-hidden"
-      >
-        {video && (
-          <video
-            src={video}
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="pointer-events-none h-full w-full object-cover"
-          />
+      {(video || image) && (
+        <Link
+          href={href || "#"}
+          target={href ? "_blank" : undefined}
+          className="block overflow-hidden rounded-lg border border-zinc-200 dark:border-zinc-800 mb-3"
+        >
+          {video && (
+            <video
+              src={video}
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="h-40 w-full object-cover group-hover:scale-105 transition-transform duration-300"
+            />
+          )}
+          {image && !video && (
+            <Image
+              src={image}
+              alt={title}
+              width={500}
+              height={300}
+              className="h-40 w-full object-cover group-hover:scale-105 transition-transform duration-300"
+            />
+          )}
+        </Link>
+      )}
+      <div className="flex-1 flex flex-col">
+        <div className="flex items-start justify-between gap-2 mb-1">
+          <h3 className="font-medium text-zinc-900 dark:text-white">{title}</h3>
+          <span className="text-xs text-zinc-500 shrink-0">{dates}</span>
+        </div>
+        <Markdown className="prose prose-sm prose-zinc dark:prose-invert prose-p:text-zinc-600 dark:prose-p:text-zinc-400 prose-p:my-1 max-w-none text-sm flex-1">
+          {description}
+        </Markdown>
+        {tags && tags.length > 0 && (
+          <p className="text-xs text-zinc-500 mt-2">
+            {tags.join(" · ")}
+          </p>
         )}
-        {image && (
-          <Image
-            src={image}
-            alt={title}
-            width={500}
-            height={300}
-            className="h-40 w-full object-cover"
-          />
-        )}
-      </Link>
-      <div className="flex flex-col flex-grow">
-        <CardHeader className="px-4 py-3">
-          <div className="space-y-1">
-            <CardTitle className="text-lg">{title}</CardTitle>
-            <time className="font-sans text-xs text-muted-foreground">{dates}</time>
-            <div className="hidden font-sans text-xs underline print:visible">
-              {link?.replace("https://", "").replace("www.", "").replace("/", "")}
-            </div>
+        {links && links.length > 0 && (
+          <div className="flex flex-wrap gap-3 mt-3 pt-3 border-t border-zinc-100 dark:border-zinc-800">
+            {links.map((link, idx) => (
+              <Link
+                href={link.href}
+                key={idx}
+                target="_blank"
+                className="text-xs text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors"
+              >
+                {link.type}
+              </Link>
+            ))}
           </div>
-        </CardHeader>
-        <CardContent className="px-4 py-2 flex-grow">
-          <Markdown className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
-            {description}
-          </Markdown>
-          {tags && tags.length > 0 && (
-            <div className="mt-3 flex flex-wrap gap-1">
-              {tags?.map((tag) => (
-                <Badge
-                  className="px-1 py-0 text-[10px]"
-                  variant="secondary"
-                  key={tag}
-                >
-                  {tag}
-                </Badge>
-              ))}
-            </div>
-          )}
-        </CardContent>
-        <CardFooter className="px-4 py-3">
-          {links && links.length > 0 && (
-            <div className="flex flex-row flex-wrap items-start gap-1">
-              {links?.map((link, idx) => (
-                <Link href={link?.href} key={idx} target="_blank">
-                  <Badge key={idx} className="flex gap-2 px-2 py-1 text-[10px]">
-                    {link.icon}
-                    {link.type}
-                  </Badge>
-                </Link>
-              ))}
-            </div>
-          )}
-        </CardFooter>
+        )}
       </div>
-    </Card>
+    </div>
   );
 }

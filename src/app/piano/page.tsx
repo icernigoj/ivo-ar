@@ -47,20 +47,9 @@ export default function PianoPage() {
         {/* Stats */}
         <section>
           <BlurFade delay={BLUR_FADE_DELAY * 3}>
-            <div className="grid grid-cols-3 gap-4">
-              <div className="text-center p-4 rounded-xl bg-zinc-100/50 dark:bg-zinc-900/50 border border-zinc-200/50 dark:border-zinc-800/50">
-                <p className="text-3xl font-bold text-sky-600 dark:text-sky-400">{DATA.piano.songs.length}</p>
-                <p className="text-sm text-zinc-500">Pieces</p>
-              </div>
-              <div className="text-center p-4 rounded-xl bg-zinc-100/50 dark:bg-zinc-900/50 border border-zinc-200/50 dark:border-zinc-800/50">
-                <p className="text-3xl font-bold text-blue-600 dark:text-blue-400">{composers.length}</p>
-                <p className="text-sm text-zinc-500">Composers</p>
-              </div>
-              <div className="text-center p-4 rounded-xl bg-zinc-100/50 dark:bg-zinc-900/50 border border-zinc-200/50 dark:border-zinc-800/50">
-                <p className="text-3xl font-bold text-cyan-600 dark:text-cyan-400">15+</p>
-                <p className="text-sm text-zinc-500">Years</p>
-              </div>
-            </div>
+            <p className="text-sm text-zinc-500">
+              {DATA.piano.songs.length} pieces · {composers.length} composers · 15+ years playing
+            </p>
           </BlurFade>
         </section>
 

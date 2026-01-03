@@ -80,7 +80,7 @@ export default function RootLayout({
 
             <div className="min-h-screen">
               <Sidebar />
-              <main className="md:ml-[280px] pb-24 md:pb-0">
+              <main className="md:ml-[248px] pb-20 md:pb-0">
                 {children}
               </main>
             </div>

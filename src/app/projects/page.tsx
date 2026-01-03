@@ -1,5 +1,6 @@
 import BlurFade from "@/components/magicui/blur-fade";
 import { ProjectCard } from "@/components/project-card";
+import { Sparkle } from "@/components/sparkle";
 import { DATA } from "@/data/resume";
 import { Metadata } from "next";
 import Link from "next/link";
@@ -18,9 +19,16 @@ export default function ProjectsPage() {
         {/* Header */}
         <section className="space-y-4">
           <BlurFade delay={BLUR_FADE_DELAY}>
-            <h1 className="text-4xl sm:text-5xl font-bold tracking-tight bg-gradient-to-r from-zinc-900 via-zinc-700 to-zinc-900 dark:from-white dark:via-zinc-300 dark:to-white bg-clip-text text-transparent">
-              Projects
-            </h1>
+            <div className="relative inline-block">
+              <h1 className="text-4xl sm:text-5xl font-bold tracking-tight bg-gradient-to-r from-zinc-900 via-zinc-700 to-zinc-900 dark:from-white dark:via-zinc-300 dark:to-white bg-clip-text text-transparent pb-2">
+                Projects
+              </h1>
+              <Sparkle
+                size={24}
+                className="absolute -right-8 top-0 text-sky-400"
+                delay={0}
+              />
+            </div>
           </BlurFade>
           <BlurFade delay={BLUR_FADE_DELAY * 2}>
             <p className="text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl">
@@ -33,7 +41,7 @@ export default function ProjectsPage() {
         {/* Projects Grid */}
         <section className="space-y-4">
           <BlurFade delay={BLUR_FADE_DELAY * 3}>
-            <h2 className="text-sm font-semibold text-sky-600 dark:text-sky-400 uppercase tracking-wider">
+            <h2 className="text-base font-semibold text-sky-600 dark:text-sky-400 uppercase tracking-wider">
               Featured Work
             </h2>
           </BlurFade>

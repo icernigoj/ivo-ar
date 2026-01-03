@@ -1,5 +1,6 @@
 import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
+import { Sparkle } from "@/components/sparkle";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { DATA } from "@/data/resume";
 import Link from "next/link";
@@ -56,12 +57,19 @@ export default function Page() {
           </BlurFade>
 
           <div className="space-y-4">
-            <BlurFadeText
-              delay={BLUR_FADE_DELAY * 2}
-              className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight bg-gradient-to-r from-zinc-900 via-zinc-700 to-zinc-900 dark:from-white dark:via-zinc-300 dark:to-white bg-clip-text text-transparent pb-2"
-              yOffset={8}
-              text={DATA.name}
-            />
+            <div className="relative inline-block">
+              <BlurFadeText
+                delay={BLUR_FADE_DELAY * 2}
+                className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight bg-gradient-to-r from-zinc-900 via-zinc-700 to-zinc-900 dark:from-white dark:via-zinc-300 dark:to-white bg-clip-text text-transparent pb-2"
+                yOffset={8}
+                text={DATA.name}
+              />
+              <Sparkle
+                size={24}
+                className="absolute -right-8 top-0 text-sky-400"
+                delay={0}
+              />
+            </div>
             <BlurFade delay={BLUR_FADE_DELAY * 3}>
               <p className="text-xl sm:text-2xl text-zinc-600 dark:text-zinc-400 font-light">
                 {DATA.description}
@@ -91,7 +99,7 @@ export default function Page() {
         {/* About */}
         <section id="about" className="space-y-4">
           <BlurFade delay={BLUR_FADE_DELAY * 5}>
-            <h2 className="text-sm font-semibold text-sky-600 dark:text-sky-400 uppercase tracking-wider">
+            <h2 className="text-base font-semibold text-sky-600 dark:text-sky-400 uppercase tracking-wider">
               About
             </h2>
           </BlurFade>
@@ -105,7 +113,7 @@ export default function Page() {
         {/* Skills */}
         <section id="skills" className="space-y-6">
           <BlurFade delay={BLUR_FADE_DELAY * 7}>
-            <h2 className="text-sm font-semibold text-sky-600 dark:text-sky-400 uppercase tracking-wider">
+            <h2 className="text-base font-semibold text-sky-600 dark:text-sky-400 uppercase tracking-wider">
               Skills
             </h2>
           </BlurFade>
@@ -128,7 +136,7 @@ export default function Page() {
         {/* Languages */}
         <section id="languages" className="space-y-6">
           <BlurFade delay={BLUR_FADE_DELAY * 12}>
-            <h2 className="text-sm font-semibold text-sky-600 dark:text-sky-400 uppercase tracking-wider">
+            <h2 className="text-base font-semibold text-sky-600 dark:text-sky-400 uppercase tracking-wider">
               Languages
             </h2>
           </BlurFade>

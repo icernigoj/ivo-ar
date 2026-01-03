@@ -1,4 +1,5 @@
 import BlurFade from "@/components/magicui/blur-fade";
+import { Sparkle } from "@/components/sparkle";
 import { DATA } from "@/data/resume";
 import { Metadata } from "next";
 import Markdown from "react-markdown";
@@ -33,9 +34,16 @@ export default function PianoPage() {
         {/* Header */}
         <section className="space-y-4">
           <BlurFade delay={BLUR_FADE_DELAY}>
-            <h1 className="text-4xl sm:text-5xl font-bold tracking-tight bg-gradient-to-r from-zinc-900 via-zinc-700 to-zinc-900 dark:from-white dark:via-zinc-300 dark:to-white bg-clip-text text-transparent">
-              Piano
-            </h1>
+            <div className="relative inline-block">
+              <h1 className="text-4xl sm:text-5xl font-bold tracking-tight bg-gradient-to-r from-zinc-900 via-zinc-700 to-zinc-900 dark:from-white dark:via-zinc-300 dark:to-white bg-clip-text text-transparent pb-2">
+                Piano
+              </h1>
+              <Sparkle
+                size={24}
+                className="absolute -right-8 top-0 text-sky-400"
+                delay={0}
+              />
+            </div>
           </BlurFade>
           <BlurFade delay={BLUR_FADE_DELAY * 2}>
             <Markdown className="prose prose-zinc dark:prose-invert prose-p:text-zinc-600 dark:prose-p:text-zinc-400 prose-strong:text-zinc-900 dark:prose-strong:text-white max-w-none">
@@ -56,7 +64,7 @@ export default function PianoPage() {
         {/* Repertoire */}
         <section className="space-y-6">
           <BlurFade delay={BLUR_FADE_DELAY * 4}>
-            <h2 className="text-sm font-semibold text-sky-600 dark:text-sky-400 uppercase tracking-wider">
+            <h2 className="text-base font-semibold text-sky-600 dark:text-sky-400 uppercase tracking-wider">
               Repertoire
             </h2>
           </BlurFade>

@@ -1,7 +1,7 @@
+import { AvatarEasterEgg } from "@/components/avatar-easter-egg";
 import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
 import { Sparkle } from "@/components/sparkle";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { DATA } from "@/data/resume";
 import Link from "next/link";
 import Markdown from "react-markdown";
@@ -47,13 +47,11 @@ export default function Page() {
         {/* Hero */}
         <section id="hero" className="space-y-8">
           <BlurFade delay={BLUR_FADE_DELAY}>
-            <div className="relative inline-block">
-              <div className="absolute -inset-4 bg-gradient-to-r from-sky-500/20 via-blue-500/20 to-cyan-500/20 rounded-full blur-2xl" />
-              <Avatar className="relative size-28 sm:size-36 border-4 border-white/10 shadow-2xl">
-                <AvatarImage alt={DATA.name} src={DATA.avatarUrl} />
-                <AvatarFallback className="text-2xl">{DATA.initials}</AvatarFallback>
-              </Avatar>
-            </div>
+            <AvatarEasterEgg
+              name={DATA.name}
+              initials={DATA.initials}
+              avatarUrl={DATA.avatarUrl}
+            />
           </BlurFade>
 
           <div className="space-y-4">

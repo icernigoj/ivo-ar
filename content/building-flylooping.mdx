@@ -1,0 +1,116 @@
+---
+title: "Building FlyLooping: A Travel Tech Deep Dive"
+publishedAt: "2021-08-10"
+summary: "How I built a multi-destination flight booking platform from scratch, dealing with real-time pricing, GDS integrations, and the chaos of airline APIs."
+image: "https://presseagence.fr/wp-content/uploads/Flylooping-le-premier-et-le-seul-organisateur-intelligent-de-voyages-multi-destinations-en-Europe.png"
+---
+
+![FlyLooping](https://presseagence.fr/wp-content/uploads/Flylooping-le-premier-et-le-seul-organisateur-intelligent-de-voyages-multi-destinations-en-Europe.png)
+
+Here's the product in action (recommend watching at 1.5x speed):
+
+**Mobile version:**
+<iframe width="100%" height="315" src="https://www.youtube.com/embed/di30vaYZZP8" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+
+**Desktop version:**
+<iframe width="100%" height="315" src="https://www.youtube.com/embed/mG9lk8L3mfE" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+
+In 2018 I had the opportunity to build something completely from scratch: **[FlyLooping](https://flylooping.com)**, a platform where travelers could book multi-destination trips across Europe with optimized flight combinations. Sounds simple? It wasn't.
+
+## The Problem
+
+Booking a trip like Paris → Barcelona → Rome → Paris is a pain. You spend hours on Skyscanner doing manual searches, or pay a travel agent. We wanted to automate everything: find the best combinations, validate prices in real-time, and let users book in one click.
+
+## The Stack
+
+I went with a split architecture:
+
+- **Node.js** for all the heavy work: GDS integrations, flight searches, price validation, combinations engine
+- **Symfony (PHP)** for the web app and booking management
+- **PostgreSQL** for persistent data
+- **Redis** for caching and queues
+- **AWS** (EC2, RDS)
+
+Why the split? Node's async model was perfect for handling multiple concurrent API calls to Amadeus. Symfony gave us a solid framework for the customer-facing side.
+
+## The Amadeus Integration
+
+Here's where things got interesting. Amadeus (the GDS that powers most flight bookings worldwide) has a... let's say *particular* API. We're talking **SOAP XML** requests and **FTP file transfers** for some operations. Yes, FTP. In 2018.
+
+The challenge wasn't just connecting—it was being efficient. Amadeus required us to maintain a minimum conversion rate (searches to bookings), so we couldn't just spam the API. With multi-destination searches, requests can grow exponentially.
+
+A user searching for a 4-city loop (departure and arrival were always the same city—that's the "loop" in FlyLooping) means:
+- Paris → Barcelona (search)
+- Barcelona → Rome (search)
+- Rome → Amsterdam (search)
+- Amsterdam → Paris (search)
+
+Multiply that by different dates, airlines, and connection options. We could hit **thousands of combinations** from a single user search.
+
+## The Combinations Engine
+
+This was the heart of the product:
+
+1. **Query Redis cache first**—no point hitting Amadeus if we have recent data
+2. **Filter smart**—not all combinations make sense (6-hour layovers at 3am? No)
+3. **Generate up to 7 optimized combinations** per search
+4. **Validate prices in real-time** before showing to users
+
+That real-time validation was key. Flight prices change all the time. Nothing kills trust faster than showing €200 and charging €350 at checkout.
+
+## Handling Traffic
+
+At peak we handled around **1,000 searches per day**, with big spikes during ad campaigns. The queue system (Redis) was essential—users couldn't wait for synchronous Amadeus calls.
+
+The system had two main parts that talked to each other:
+
+**Node.js Backend** (the brain)
+- Workers that hit the Amadeus GDS API (SOAP/XML, yes really)
+- Redis for queues and caching
+- WebSocket server pushing real-time updates to the browser
+
+**Symfony Web App** (the face)
+- User accounts and authentication
+- Booking management
+- Payment processing (Stripe, PayPal, Lydia)
+- Admin dashboard
+- PostgreSQL for persistent data
+
+When a user searched, the flow was:
+
+1. Browser sends search request
+2. Node.js queues the job in Redis
+3. Worker picks it up, starts hitting Amadeus
+4. WebSocket pushes updates: *"Searching Paris → Barcelona..."*, *"Found 24 options..."*, *"Validating prices..."*
+5. Results cached in Redis
+6. User sees combinations, picks one
+7. Booking goes to Symfony for payment processing
+
+The WebSocket was key for UX—users could see progress in real-time instead of staring at a spinner. Made the wait feel much shorter.
+
+Workers scaled horizontally, Redis kept everything coordinated.
+
+## Payments
+
+We integrated **Stripe**, **PayPal**, and **Lydia** (popular in France). Each one has its own issues:
+
+- Multi-currency transactions
+- Refunds (airlines make this complicated)
+- Fraud prevention
+
+## DevOps
+
+I set up the whole infrastructure: CI/CD pipelines, integration tests (essential when dealing with external APIs), monitoring, alerts. When your booking system goes down at 2am, you need to know before users start complaining.
+
+## What I Learned
+
+Building FlyLooping over about a year taught me:
+
+1. **Third-party APIs are never as simple as the docs say**—especially in travel tech
+2. **Caching is everything** when you have conversion rate requirements
+3. **Queues save your life** for anything that can be async
+4. **Real-time validation is non-negotiable**—users need to trust your prices
+
+---
+
+FlyLooping was eventually acquired. The technical challenges I solved there still shape how I approach complex systems today.

@@ -49,7 +49,6 @@ export default function Sidebar() {
                   </Avatar>
                   <div className="min-w-0 py-0.5">
                     <p className="font-medium text-sm text-zinc-900 dark:text-white">{DATA.name}</p>
-                    <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">{DATA.location}</p>
                   </div>
                 </div>
               </Link>
@@ -136,36 +135,59 @@ export default function Sidebar() {
           <div className="absolute inset-0 rounded-xl border border-zinc-200/50 dark:border-zinc-800/50" />
 
           {/* Content */}
-          <div className="relative z-10 flex items-center justify-around px-2 py-2">
-            {DATA.navbar.map((item) => {
-              const isActive = pathname === item.href;
-              return (
-                <div key={item.href} className="relative">
-                  {isActive && (
-                    <motion.div
-                      layoutId="mobile-nav-active"
-                      className="absolute inset-0 bg-white/60 dark:bg-white/15 rounded-md"
-                      transition={{
-                        type: "spring",
-                        stiffness: 350,
-                        damping: 30,
-                      }}
-                    />
-                  )}
-                  <Link
-                    href={item.href}
-                    className={cn(
-                      "relative block px-3 py-1.5 rounded-md text-xs font-medium transition-colors duration-200",
-                      isActive
-                        ? "text-zinc-900 dark:text-white"
-                        : "text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white"
+          <div className="relative z-10 flex flex-col gap-2 px-3 py-3">
+            {/* Navigation row */}
+            <div className="flex items-center justify-around">
+              {DATA.navbar.map((item) => {
+                const isActive = pathname === item.href;
+                return (
+                  <div key={item.href} className="relative">
+                    {isActive && (
+                      <motion.div
+                        layoutId="mobile-nav-active"
+                        className="absolute inset-0 bg-white/60 dark:bg-white/15 rounded-md"
+                        transition={{
+                          type: "spring",
+                          stiffness: 350,
+                          damping: 30,
+                        }}
+                      />
                     )}
+                    <Link
+                      href={item.href}
+                      className={cn(
+                        "relative block px-3 py-1.5 rounded-md text-xs font-medium transition-colors duration-200",
+                        isActive
+                          ? "text-zinc-900 dark:text-white"
+                          : "text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white"
+                      )}
+                    >
+                      {item.label}
+                    </Link>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Social links + theme toggle row */}
+            <div className="flex items-center justify-center gap-2 pt-1 border-t border-zinc-200/50 dark:border-zinc-800/50">
+              {Object.entries(DATA.contact.social)
+                .filter(([_, social]) => social.navbar)
+                .map(([name, social]) => (
+                  <Link
+                    key={name}
+                    aria-label={name}
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center size-8 rounded-md text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-white/50 dark:hover:bg-white/10 transition-all duration-200"
                   >
-                    {item.label}
+                    <social.icon className="size-4" />
                   </Link>
-                </div>
-              );
-            })}
+                ))}
+              <div className="w-px h-4 bg-zinc-300/50 dark:bg-zinc-700/50 mx-1" />
+              <ModeToggle ariaLabel="Toggle theme" />
+            </div>
           </div>
         </div>
       </nav>

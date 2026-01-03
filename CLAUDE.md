@@ -78,3 +78,8 @@ Automatic deployment via GitHub Actions on push to `main` branch.
 pnpm build
 rsync -avz --delete ./out/ root@62.72.8.28:/var/www/ivo-ar/out/
 ```
+
+## Commit Guidelines
+
+- **Do NOT** include Claude Code attribution or co-author lines in commit messages
+- Keep commit messages clean and descriptive

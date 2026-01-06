@@ -7,8 +7,7 @@ export const DATA = {
   url: "https://ivo.ar",
   location: "Paris, France",
   locationLink: "https://www.google.com/maps/place/Paris",
-  CVLink:
-    "https://docs.google.com/document/d/1_jEl91d9QYoijcrEh9fvuegtkXeBhQb3/edit?usp=sharing&ouid=115893443729996838769&rtpof=true&sd=true",
+  CVLink: "/cv.pdf",
   description: "Passionate fullstack developer, entrepreneur and pianist.",
   summary:
     `👨‍💻 **Fullstack developer & tech lead** with **12+ years** building web and mobile applications that people actually use.

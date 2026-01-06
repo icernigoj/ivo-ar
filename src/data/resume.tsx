@@ -214,7 +214,7 @@ I'm always curious about new technologies, but I believe the best solutions come
       ],
     },
     {
-      company: "Dashlane",
+      company: "Dashlane - Theodo",
       href: "https://www.dashlane.com/",
       badges: ["Freelance"],
       location: "France",

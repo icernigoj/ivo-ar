@@ -92,7 +92,7 @@ I'm always curious about new technologies, but I believe the best solutions come
       },
       X: {
         name: "X",
-        url: "https://dub.sh/ivo-x",
+        url: "https://x.com/ivocerni",
         icon: Icons.x,
         navbar: true,
       },

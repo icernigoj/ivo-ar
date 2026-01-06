@@ -17,9 +17,9 @@ I enjoy working with diverse tech stacks - **React/React Native**, **Node.js**, 
 
 🔧 **Recently, I've been working on some interesting challenges:**
 
-- At **LCL** (via Theodo), I'm tech lead on a team building a KYB/KYC process from scratch in a highly regulated banking environment - integrating compliance databases like Banque de France and Pappers while maintaining strict regulatory standards.
+- At **LCL**, I'm tech lead on a team building a complex KYB/KYC platform from scratch for one of France's major banks - orchestrating 15+ integrations with compliance databases (Banque de France, Pappers, World-Check) while ensuring code quality and regulatory compliance in a highly demanding environment.
 
-- At **Colas** (via Theodo), I had the opportunity to be tech lead on a team maintaining 5 different operational applications - from supply chain management to public-facing construction site tracking. It taught me a lot about juggling multiple priorities and keeping critical systems running smoothly.
+- At **Colas**, I had the opportunity to be tech lead on a team maintaining 5 different operational applications - from supply chain management to public-facing construction site tracking. It taught me a lot about juggling multiple priorities and keeping critical systems running smoothly.
 
 - Created the entire tech infrastructure for **FlyLooping**, a travel startup where users can book multi-city European tours with optimized flight combinations.
 
@@ -113,10 +113,10 @@ I'm always curious about new technologies, but I believe the best solutions come
       location: "France",
       title: "Tech Lead",
       logoUrl: "/lcl.png",
-      start: "February 2025",
+      start: "March 2025",
       end: "Current",
       description:
-        "Tech lead on a team building a comprehensive **KYB/KYC process from scratch** using NestJS with hexagonal architecture.\n\n**Key responsibilities**:\n\n - Orchestrated the integration of multiple screening services and compliance databases including **Banque de France**, **Pappers**, and **LCL's internal systems**\n - Set up CI/CD pipelines and established code quality standards\n - Technical conception and architecture proposals\n - Ensuring regulatory compliance in a highly regulated banking environment",
+        "Tech lead on a team building a comprehensive **KYB/KYC process from scratch** for one of France's major retail banks.\n\n**Key achievements**:\n\n - Architected a **NestJS hexagonal architecture** ensuring maintainability and testability\n - Orchestrated **15+ integrations** with screening services and compliance databases including **Banque de France**, **Pappers**, **World-Check**, and LCL's internal banking systems\n - Established **code quality as a priority**: comprehensive test coverage, CI/CD pipelines, code reviews, and technical documentation\n - Led technical conception and architecture proposals in a highly regulated banking environment\n - Ensured **regulatory compliance** with French banking standards and AML/KYC requirements",
       skills: [
         "Node.js",
         "NestJS",
@@ -135,7 +135,7 @@ I'm always curious about new technologies, but I believe the best solutions come
       title: "Tech Lead",
       logoUrl: "/colas.jpg",
       start: "February 2024",
-      end: "Current",
+      end: "February 2025",
       description:
         "Led a team of developers to **maintain and evolve 5 key operational softwares**:\n\n - Management of material supply requests\n - Waste management requests\n - HR management\n - Internal communication\n - Community-facing application to follow construction sites in the neighborhood",
       skills: [

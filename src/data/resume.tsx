@@ -17,9 +17,9 @@ I enjoy working with diverse tech stacks - **React/React Native**, **Node.js**, 
 
 🔧 **Recently, I've been working on some interesting challenges:**
 
-- At **Colas**, I had the opportunity to lead a dev team maintaining 5 different operational applications - from supply chain management to public-facing construction site tracking. It taught me a lot about juggling multiple priorities and keeping critical systems running smoothly.
+- At **LCL** (via Theodo), I'm tech lead on a team building a KYB/KYC process from scratch in a highly regulated banking environment - integrating compliance databases like Banque de France and Pappers while maintaining strict regulatory standards.
 
-- Built **Greenny** from the ground up - a climate tech platform that helps companies track and reduce their CO2 footprint through AI-powered analytics and employee engagement via mobile app.
+- At **Colas** (via Theodo), I had the opportunity to be tech lead on a team maintaining 5 different operational applications - from supply chain management to public-facing construction site tracking. It taught me a lot about juggling multiple priorities and keeping critical systems running smoothly.
 
 - Created the entire tech infrastructure for **FlyLooping**, a travel startup where users can book multi-city European tours with optimized flight combinations.
 
@@ -107,7 +107,28 @@ I'm always curious about new technologies, but I believe the best solutions come
   hackathons: [],
   work: [
     {
-      company: "COLAS",
+      company: "LCL - Theodo",
+      href: "https://www.lcl.fr/",
+      badges: ["Freelance"],
+      location: "France",
+      title: "Tech Lead",
+      logoUrl: "/lcl.png",
+      start: "February 2025",
+      end: "Current",
+      description:
+        "Tech lead on a team building a comprehensive **KYB/KYC process from scratch** using NestJS with hexagonal architecture.\n\n**Key responsibilities**:\n\n - Orchestrated the integration of multiple screening services and compliance databases including **Banque de France**, **Pappers**, and **LCL's internal systems**\n - Set up CI/CD pipelines and established code quality standards\n - Technical conception and architecture proposals\n - Ensuring regulatory compliance in a highly regulated banking environment",
+      skills: [
+        "Node.js",
+        "NestJS",
+        "AWS",
+        "React Native",
+        "GitLab CI",
+        "Kafka",
+        "PostgreSQL",
+      ],
+    },
+    {
+      company: "COLAS - Theodo",
       href: "https://www.colas.com/",
       badges: ["Freelance"],
       location: "France",
